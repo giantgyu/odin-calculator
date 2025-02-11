@@ -1,0 +1,29 @@
+.calc-frame {
+    background-color: gray;
+    height: 80vh;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Verdana', serif;
+    padding: 24px;
+}
+
+.display-frame {
+    background-color: rgb(58, 58, 58);
+    flex-basis: 64px;
+    font-size: 48px;
+    text-align: right;
+    color: white;
+    padding: 8px;
+}
+
+.btn-other,
+.btn-number,
+.btn-operator,
+.number-btns>#btn-dot,
+.operator-btns>#btn-equals {
+    width: 48px;
+    height: 48px;
+}
