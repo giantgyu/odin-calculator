@@ -1,17 +1,18 @@
 function add(a, b) {
-    return a + b;
+    return Number((a + b).toPrecision(12));
 }
 
 function subtract(a, b) {
-    return a - b;
+    return Number((a - b).toPrecision(12));
 }
 
 function multiply(a, b) {
-    return a * b;
+    return Number((a * b).toPrecision(12));
 }
 
 function divide(a, b) {
-    return a / b;
+    return Number((a / b).toPrecision(12));
+
 }
 
 function operate(calculateObject) {
@@ -74,8 +75,6 @@ buttonOperatorElements.forEach(button => {
 
     button.addEventListener("click", () => {
 
-        calculator.operation = button.textContent;
-
         //Assign numbers to calculator.numberA and .numberB
         if (calculator.numberA === null) { //walang laman
             calculator.numberA = displayNumber;
@@ -90,12 +89,13 @@ buttonOperatorElements.forEach(button => {
             calculator.numberB = null;
             displayFrame.textContent = displayNumber;
         }
+        calculator.operation = button.textContent;
+
+
 
         decimalPoint.isClickable = true;
         console.log(calculator);
         displayNumber = "";
-
-
 
     });
 
@@ -103,7 +103,7 @@ buttonOperatorElements.forEach(button => {
 
 buttons["btn-equals"] = document.querySelector("#btn-equals");
 buttons["btn-equals"].addEventListener("click", () => {
-
+    if (displayNumber === '' || calculator.operation == null) { return; };
     //Assign numbers to calculator.numberA and .numberB
     if (calculator.numberA === null) { //walang laman
         calculator.numberA = displayNumber;
@@ -119,9 +119,8 @@ buttons["btn-equals"].addEventListener("click", () => {
         calculator.operation = null;
         displayFrame.textContent = displayNumber;
 
-        console.log(calculator);
-
     }
+    console.log(calculator);
 })
 
 const displayFrame = document.querySelector(".display-frame")
@@ -131,13 +130,11 @@ const decimalPoint = {
 }
 
 
-buttons["btn-ac"] = document.querySelector("#btn-ac")
+buttons["btn-ac"] = document.querySelector("#btn-ac");
 buttons["btn-ac"].addEventListener("click", () => {
     displayFrame.textContent = "";
     calculator.numberA = null;
     calculator.numberB = null;
     calculator.operation = null;
     displayNumber = "";
-}
-
-)
+});
